@@ -4,39 +4,224 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dara Shikoh Channa</title>
-  <meta name="description" content="Interdisciplinary artist working across film, sound, music and cultural practice." />
+  <meta name="description" content="Sound engineer, interdisciplinary artist and researcher working across film, sound, and cultural practice." />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
-  <style.>
-    
-    :root{--bg:#0b0b0c;--fg:#f2f2f0;--muted:rgba(242,242,240,.65);--hair:rgba(242,242,240,.14)}
-    *{box-sizing:border-box} html,body{height:100%}
-    body{margin:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-weight:300;letter-spacing:.2px}
-    a{color:inherit;text-decoration:none} a:hover{opacity:.85}
-    .wrap{min-height:100%;display:flex;flex-direction:column;padding:48px 20px}
-    header{max-width:980px;margin:0 auto;width:100%;display:flex;justify-content:space-between;align-items:flex-start;gap:24px}
-    .brand{font-family:"Playfair Display",serif;font-weight:600;font-size:20px;line-height:1.1}
-    nav{display:flex;gap:18px;font-size:12px;text-transform:uppercase;letter-spacing:1.6px;color:var(--muted)}
-    main{max-width:980px;width:100%;margin:90px auto 0}
-    h1{margin:0;font-family:"Playfair Display",serif;font-weight:500;font-size:clamp(36px,5vw,60px);line-height:1.05}
-    .intro{margin:20px 0 0;max-width:65ch;font-size:16px;line-height:1.75;color:var(--muted)}
-    .divider{margin:42px auto 0;height:1px;background:var(--hair);max-width:980px}
-    section{max-width:980px;margin:42px auto 0}
-    .section-title{font-size:12px;text-transform:uppercase;letter-spacing:1.6px;color:var(--muted);margin-bottom:18px}
-    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 26px}
-    .card{border-top:1px solid var(--hair);padding-top:14px;transition:opacity .25s ease}
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0b0c;
+      --fg:#f2f2f0;
+      --muted:rgba(242,242,240,.65);
+      --hair:rgba(242,242,240,.14);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--fg);
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-weight:300;
+      letter-spacing:.2px;
+    }
+    a{color:inherit;text-decoration:none}
+    a:hover{opacity:.85}
+
+    .wrap{
+      min-height:100%;
+      display:flex;
+      flex-direction:column;
+      padding:48px 20px;
+    }
+
+    header{
+      max-width:980px;
+      margin:0 auto;
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:24px;
+    }
+
+    .brand{
+      font-family:"Playfair Display", serif;
+      font-weight:600;
+      font-size:20px;
+      line-height:1.1;
+    }
+
+    nav{
+      display:flex;
+      gap:18px;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:1.6px;
+      color:var(--muted);
+    }
+
+    nav a{
+      position:relative;
+    }
+
+    nav a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-4px;
+      width:0;
+      height:1px;
+      background:var(--fg);
+      opacity:.4;
+      transition:width .3s ease;
+    }
+
+    nav a:hover::after{
+      width:100%;
+    }
+
+    /* HERO */
+    .hero{
+      margin-top:90px;
+    }
+
+    .hero-grid{
+      max-width:980px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:40px;
+      align-items:center;
+    }
+
+    h1{
+      margin:0;
+      font-family:"Playfair Display", serif;
+      font-weight:500;
+      font-size:clamp(40px,5.5vw,64px);
+      line-height:1.02;
+      letter-spacing:-.3px;
+    }
+
+    .intro{
+      margin:22px 0 0;
+      max-width:65ch;
+      font-size:16px;
+      line-height:1.75;
+      color:var(--muted);
+    }
+
+    .hero-image img{
+      width:100%;
+      height:auto;
+      display:block;
+      filter:grayscale(100%) contrast(1.05);
+      opacity:.9;
+    }
+
+    .hero-text,
+    .hero-image{
+      animation:fadeUp 1.2s ease-out both;
+    }
+
+    .hero-image{
+      animation-delay:.15s;
+    }
+
+    @keyframes fadeUp{
+      from{opacity:0; transform:translateY(12px)}
+      to{opacity:1; transform:none}
+    }
+
+    .divider{
+      margin:48px auto 0;
+      height:1px;
+      background:var(--hair);
+      max-width:980px;
+    }
+
+    section{
+      max-width:980px;
+      margin:42px auto 0;
+    }
+
+    .section-title{
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:1.6px;
+      color:var(--muted);
+      margin-bottom:18px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:18px 26px;
+    }
+
+    .card{
+      border-top:1px solid var(--hair);
+      padding-top:14px;
+      transition:opacity .25s ease;
+    }
+
     .card:hover{opacity:.9}
-    .card .title{font-size:15px;letter-spacing:.4px}
-    .card .meta{margin-top:6px;font-size:13px;line-height:1.6;color:var(--muted)}
-    footer{margin-top:auto;max-width:980px;margin-left:auto;margin-right:auto;padding-top:80px;font-size:12px;letter-spacing:.3px;color:rgba(242,242,240,.55)}
-    @media (max-width:720px){header{flex-direction:column} main{margin-top:64px} .grid{grid-template-columns:1fr}}
+
+    .card .title{
+      font-size:15px;
+      letter-spacing:.4px;
+    }
+
+    .card .meta{
+      margin-top:6px;
+      font-size:13px;
+      line-height:1.6;
+      color:var(--muted);
+    }
+
+    footer{
+      margin-top:auto;
+      max-width:980px;
+      margin-left:auto;
+      margin-right:auto;
+      padding-top:80px;
+      font-size:12px;
+      letter-spacing:.3px;
+      color:rgba(242,242,240,.55);
+    }
+
+    .signature{
+      margin-top:60px;
+      max-width:980px;
+      margin-left:auto;
+      margin-right:auto;
+      color:rgba(242,242,240,.35);
+      font-size:13px;
+      letter-spacing:.4px;
+    }
+
+    @media (max-width:900px){
+      .hero-grid{grid-template-columns:1fr}
+      .hero-image{order:-1}
+    }
+
+    @media (max-width:720px){
+      header{flex-direction:column}
+      .hero{margin-top:64px}
+      .grid{grid-template-columns:1fr}
+    }
   </style>
 </head>
+
 <body>
   <div class="wrap">
+
     <header>
-      <div class="brand"><a href="index.html">Your Name</a></div>
+      <div class="brand">Dara Shikoh Channa</div>
       <nav>
         <a href="projects.html">Works</a>
         <a href="about.html">About</a>
@@ -44,41 +229,40 @@
       </nav>
     </header>
 
-<main class="hero">
-  <div class="hero-grid">
-    <div class="hero-text">
-      <h1>
-        Listening as narrative.<br>
-        Story as movement.
-      </h1>
-      <p class="intro">
-        sound engineer, interdisciplinary artist,
-        and researcher working between Karachi and Berlin. His practice
-        moves across film, sound, and cultural work, engaging migration,
-        decolonial narratives, and sonic sensitivity through storytelling
-        shaped by elements of magical realism.
-      </p>
-    </div>
+    <main class="hero">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <h1>
+            Listening as narrative.<br>
+            Story as movement.
+          </h1>
+          <p class="intro">
+            Dara Shikoh Channa is a sound engineer, interdisciplinary artist,
+            and researcher working between Karachi and Berlin. His practice
+            moves across film, sound art, music, and cultural work, engaging
+            migration, decolonial narratives, sonic sensitivity, and
+            storytelling shaped by elements of magical realism.
+          </p>
+        </div>
 
-    <div class="hero-image">
-      <img src="assets/portrait.jpg" alt="Portrait of Dara Shikoh Channa">
-    </div>
-  </div>
-</main>
-
+        <div class="hero-image">
+          <img src="assets/portrait.jpg" alt="Portrait of Dara Shikoh Channa">
+        </div>
+      </div>
+    </main>
 
     <div class="divider"></div>
 
     <section>
       <div class="section-title">Film & Visual Art</div>
       <div class="grid">
-        <a class="card" href="projects/project-template.html">
-          <div class="title">Project Title</div>
-          <div class="meta">Film · direction / script · sound-led narrative</div>
+        <a class="card" href="projects/under-the-sun.html">
+          <div class="title">Under the Sun</div>
+          <div class="meta">Film · sound-led observational narrative · Karachi</div>
         </a>
-        <a class="card" href="projects/project-template.html">
-          <div class="title">Project Title</div>
-          <div class="meta">Moving image · installation · visual research</div>
+        <a class="card" href="#">
+          <div class="title">Documenting the Maasai</div>
+          <div class="meta">Documentary · visual ethnography · community & place</div>
         </a>
       </div>
     </section>
@@ -86,35 +270,29 @@
     <section>
       <div class="section-title">Sound Art & Music</div>
       <div class="grid">
-        <a class="card" href="projects/rooms-2.html">
-          <div class="title">Rooms 2</div>
-          <div class="meta">Spatial audio · installation · narrative space</div>
+        <a class="card" href="projects/rooms.html">
+          <div class="title">Rooms</div>
+          <div class="meta">Spatial sound · installation · listening as architecture</div>
         </a>
-        <a class="card" href="projects/project-template.html">
-          <div class="title">Project Title</div>
-          <div class="meta">Composition / performance · voice & texture</div>
-        </a>
-      </div>
-    </section>
-
-    <section>
-      <div class="section-title">Cultural Work & Curation</div>
-      <div class="grid">
-        <a class="card" href="projects/project-template.html">
-          <div class="title">Project Title</div>
-          <div class="meta">Curation · research · community / archive</div>
-        </a>
-        <a class="card" href="projects/project-template.html">
-          <div class="title">Project Title</div>
-          <div class="meta">Programme design · facilitation · collaboration</div>
+        <a class="card" href="#">
+          <div class="title">Location Sound Recording</div>
+          <div class="meta">Field recording · film sound · narrative realism</div>
         </a>
       </div>
     </section>
 
     <footer>
-      <div>© <span id="y"></span> Dara Shikoh Channa · 2026</div>
+      <div>© <span id="y"></span> Dara Shikoh Channa · Karachi / Berlin</div>
     </footer>
+
+    <div class="signature">
+      Listening is a way of staying.
+    </div>
+
   </div>
-  <script>document.getElementById("y").textContent=new Date().getFullYear();</script>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
