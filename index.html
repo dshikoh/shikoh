@@ -1,115 +1,512 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dara Shikoh Channa</title>
-  <meta name="description" content="Interdisciplinary artist working across film, sound, music and cultural practice.">
+  <meta name="description" content="Interdisciplinary artist working across film, sound, music and cultural practice." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 
-  <!-- Main stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  <style>
+    :root{
+      --bg:#0b0b0c;
+      --fg:#f2f2f0;
+      --muted:rgba(242,242,240,.68);
+      --hair:rgba(242,242,240,.14);
+      --card:rgba(242,242,240,.06);
+      --card2:rgba(242,242,240,.04);
+      --radius:18px;
+      --max:1120px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:radial-gradient(1200px 600px at 20% 10%, rgba(242,242,240,.06), transparent 60%),
+                 radial-gradient(900px 500px at 85% 20%, rgba(242,242,240,.04), transparent 55%),
+                 var(--bg);
+      color:var(--fg);
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      line-height:1.55;
+      letter-spacing:.2px;
+    }
+
+    a{color:inherit; text-decoration:none}
+    a:hover{opacity:.9}
+    .container{max-width:var(--max); margin:0 auto; padding:24px}
+
+    /* Top nav */
+    .nav{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(10px);
+      background:linear-gradient(to bottom, rgba(11,11,12,.86), rgba(11,11,12,.55));
+      border-bottom:1px solid var(--hair);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px;
+      max-width:var(--max); margin:0 auto; padding:14px 24px;
+    }
+    .brand{
+      display:flex; flex-direction:column;
+      gap:2px;
+    }
+    .brand .name{
+      font-family:"Playfair Display", serif;
+      font-weight:600;
+      letter-spacing:.4px;
+      font-size:18px;
+    }
+    .brand .tag{
+      font-size:12px;
+      color:var(--muted);
+    }
+    .nav-links{
+      display:flex; gap:14px; flex-wrap:wrap;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .nav-links a{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid transparent;
+    }
+    .nav-links a:hover{
+      border-color:var(--hair);
+      background:rgba(242,242,240,.03);
+      color:var(--fg);
+    }
+
+    /* Hero */
+    .hero{
+      padding:52px 0 18px;
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:22px;
+      align-items:start;
+    }
+    .kicker{
+      color:var(--muted);
+      font-size:13px;
+      letter-spacing:.6px;
+      text-transform:uppercase;
+      margin:0 0 10px;
+    }
+    h1{
+      margin:0 0 14px;
+      font-family:"Playfair Display", serif;
+      font-weight:600;
+      font-size:44px;
+      line-height:1.05;
+      letter-spacing:.2px;
+    }
+    .lead{
+      margin:0 0 18px;
+      color:rgba(242,242,240,.78);
+      font-size:16px;
+      max-width:62ch;
+    }
+    .cta-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:8px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      border-radius:999px;
+      padding:10px 14px;
+      font-size:13px;
+      border:1px solid var(--hair);
+      background:rgba(242,242,240,.04);
+      color:var(--fg);
+    }
+    .btn.primary{
+      background:rgba(242,242,240,.10);
+      border-color:rgba(242,242,240,.22);
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .fine{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    /* Portrait card */
+    .portrait-card{
+      border:1px solid var(--hair);
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, var(--card), var(--card2));
+      overflow:hidden;
+    }
+    .portrait-wrap{
+      aspect-ratio: 4 / 5;
+      background:rgba(242,242,240,.04);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .portrait{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      filter:saturate(.95) contrast(1.02);
+    }
+    .portrait-meta{
+      padding:14px 14px 16px;
+      border-top:1px solid var(--hair);
+    }
+    .portrait-meta .small{
+      margin:0;
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    /* Sections */
+    section{padding:26px 0}
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:12px;
+    }
+    h2{
+      margin:0;
+      font-size:16px;
+      font-weight:600;
+      letter-spacing:.2px;
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* Cards / grids */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:12px;
+    }
+    .card{
+      border:1px solid var(--hair);
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, var(--card), var(--card2));
+      padding:14px;
+    }
+    .card h3{
+      margin:0 0 8px;
+      font-size:14px;
+      font-weight:600;
+    }
+    .card p{margin:0; color:rgba(242,242,240,.78); font-size:13px}
+
+    .span-6{grid-column:span 6}
+    .span-7{grid-column:span 7}
+    .span-5{grid-column:span 5}
+    .span-12{grid-column:span 12}
+
+    .list{
+      margin:10px 0 0;
+      padding:0;
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .item{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      padding:10px 12px;
+      border:1px solid var(--hair);
+      border-radius:14px;
+      background:rgba(242,242,240,.03);
+    }
+    .item .left{display:flex; flex-direction:column; gap:2px}
+    .item .title{font-size:13px; font-weight:600}
+    .item .meta{font-size:12px; color:var(--muted)}
+    .item .right{
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+      font-size:12px; color:var(--muted);
+    }
+    .pill{
+      border:1px solid var(--hair);
+      border-radius:999px;
+      padding:6px 10px;
+      color:var(--muted);
+      font-size:12px;
+      background:rgba(242,242,240,.02);
+    }
+
+    /* Footer */
+    footer{
+      padding:26px 0 34px;
+      color:var(--muted);
+      font-size:12px;
+      border-top:1px solid var(--hair);
+      margin-top:18px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr; padding-top:34px}
+      h1{font-size:36px}
+      .span-6,.span-7,.span-5{grid-column:span 12}
+      .nav-inner{gap:10px}
+    }
+  </style>
 </head>
 
 <body>
-
-  <!-- Top navigation -->
-  <header class="topbar">
-    <div class="container nav">
-      <a class="brand" href="index.html">
-        <strong>Dara Shikoh Channa</strong>
-        <span>Sound • film • cultural practice</span>
-      </a>
-      <nav class="navlinks">
-        <a href="projects.html">Works</a>
-        <a href="practice-sound.html">Practice</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </nav>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="name">Dara Shikoh Channa</div>
+        <div class="tag">Film • Sound • Music • Cultural practice</div>
+      </div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#work">Selected work</a>
+        <a href="#sound">Sound</a>
+        <a href="#links">Links</a>
+        <a href="#contact">Contact</a>
+      </div>
     </div>
-  </header>
+  </div>
 
-  <!-- Hero -->
   <main class="container">
-    <section class="section hero">
-      <h1>Listening as narrative.<br>Image as memory.</h1>
-      <p>
-        Interdisciplinary artist working across film, sound art, music, and cultural practice.
-        I build projects where research, listening, and storytelling meet—through moving image,
-        composition, and curated contexts.
-      </p>
-    </section>
+    <!-- HERO -->
+    <div class="hero" id="top">
+      <div>
+        <p class="kicker">Interdisciplinary artist</p>
+        <h1>Storytelling through film, sound, and music.</h1>
+        <p class="lead">
+          I work across location sound, sound design, music, and research-driven cultural practice.
+          Based in Berlin — available for collaborations, commissions, and technical sound roles.
+        </p>
 
-    <!-- Portrait -->
-    <section class="section">
-      <img
-        src="assets/img/portrait.jpg"
-        alt="Portrait of Dara Shikoh Channa"
-        style="max-width:420px;border-radius:18px;display:block"
-      >
-    </section>
-
-    <!-- Film & Visual Art -->
-    <section class="section">
-      <div class="meta">Film & Visual Art</div>
-      <div class="grid">
-        <div class="col-6 card">
-          <h3>Project title</h3>
-          <p class="meta">Film · direction / script · sound-led narrative</p>
+        <div class="cta-row">
+          <!-- Replace these with your real files/links -->
+          <a class="btn primary" href="assets/Dara_Shikoh_Channa_CV.pdf" target="_blank" rel="noopener">Download CV</a>
+          <a class="btn" href="#contact">Contact</a>
+          <a class="btn" href="https://www.imdb.com/" target="_blank" rel="noopener">IMDb</a>
         </div>
-        <div class="col-6 card">
-          <h3>Project title</h3>
-          <p class="meta">Moving image · installation · visual research</p>
+
+        <p class="fine">
+          Tip: put your CV PDF in <span class="pill">/assets</span> and name it exactly like the link above (or change the link).
+        </p>
+      </div>
+
+      <div class="portrait-card">
+        <div class="portrait-wrap">
+          <!-- Put your portrait at: /assets/portrait.jpg -->
+          <img class="portrait" src="assets/portrait.jpg" alt="Portrait of Dara Shikoh Channa" loading="lazy">
+        </div>
+        <div class="portrait-meta">
+          <p class="small">Berlin-based • Film sound • Music • Cultural practice</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-head">
+        <h2>About</h2>
+        <p class="sub">A short, human intro + your focus areas</p>
+      </div>
+
+      <div class="grid">
+        <div class="card span-7">
+          <h3>Bio</h3>
+          <p>
+            I’m an interdisciplinary artist and sound professional working across film, sound, and music,
+            with a background in filmmaking (direction & script), history, and anthropology. My work centers
+            storytelling and collaboration — moving between technical precision and cultural research.
+          </p>
+        </div>
+
+        <div class="card span-5">
+          <h3>Focus</h3>
+          <p>
+            Location sound • Sound design • Field recording • Editing • Research-led projects •
+            Live sound setups (small to medium)
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- Sound Art & Music -->
-    <section class="section">
-      <div class="meta">Sound Art & Music</div>
-      <div class="grid">
-        <div class="col-6 card">
-          <h3><a href="projects/rooms.html">Rooms</a></h3>
-          <p class="meta">Spatial audio · installation · narrative space</p>
+    <!-- SELECTED WORK -->
+    <section id="work">
+      <div class="section-head">
+        <h2>Selected work</h2>
+        <p class="sub">Film credits + key artistic projects</p>
+      </div>
+
+      <div class="card">
+        <h3>Feature films — Location Sound Mixer</h3>
+        <ul class="list">
+          <li class="item">
+            <div class="left">
+              <div class="title">Operation 021</div>
+              <div class="meta">Feature film • Location sound</div>
+            </div>
+            <div class="right">
+              <!-- Replace with the exact IMDb title URL -->
+              <a class="pill" href="https://www.imdb.com/" target="_blank" rel="noopener">IMDb</a>
+            </div>
+          </li>
+
+          <li class="item">
+            <div class="left">
+              <div class="title">Jalaibee</div>
+              <div class="meta">Feature film • Location sound</div>
+            </div>
+            <div class="right">
+              <a class="pill" href="https://www.imdb.com/" target="_blank" rel="noopener">IMDb</a>
+            </div>
+          </li>
+
+          <li class="item">
+            <div class="left">
+              <div class="title">Revenge of the Worthless</div>
+              <div class="meta">Feature film • Location sound</div>
+            </div>
+            <div class="right">
+              <a class="pill" href="https://www.imdb.com/" target="_blank" rel="noopener">IMDb</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="grid" style="margin-top:12px">
+        <div class="card span-6">
+          <h3>Rooms 2</h3>
+          <p>
+            Project with a 3D audio component. (Add a 2–3 line description, your role, tools, and a link/video.)
+          </p>
         </div>
-        <div class="col-6 card">
-          <h3>Project title</h3>
-          <p class="meta">Composition / performance · voice & texture</p>
+        <div class="card span-6">
+          <h3>Other projects</h3>
+          <p>
+            Add 2–4 more: sound design pieces, installations, performances, research work, workshops.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- Cultural work -->
-    <section class="section">
-      <div class="meta">Cultural Work & Curation</div>
+    <!-- SOUND / SERVICES -->
+    <section id="sound">
+      <div class="section-head">
+        <h2>Sound</h2>
+        <p class="sub">What you offer + what you’re equipped for</p>
+      </div>
+
       <div class="grid">
-        <div class="col-6 card">
-          <h3>Project title</h3>
-          <p class="meta">Curation · research · community / archive</p>
+        <div class="card span-6">
+          <h3>Services</h3>
+          <p>
+            Location sound • Dialogue edit • Basic mix prep • Field recording • Playback/recording setups •
+            Live sound (compact PA)
+          </p>
         </div>
-        <div class="col-6 card">
-          <h3>Project title</h3>
-          <p class="meta">Programme design · facilitation · collaboration</p>
+        <div class="card span-6">
+          <h3>Gear snapshot</h3>
+          <p>
+            QSC K12.2 • QSC KS212C • QSC K8.2 • Behringer FLOW 8 • SM58 x2 • Laptop playback/recording
+          </p>
         </div>
       </div>
     </section>
+
+    <!-- LINKS / PRESS -->
+    <section id="links">
+      <div class="section-head">
+        <h2>Links</h2>
+        <p class="sub">Your “links PDF” content goes here as a clean list</p>
+      </div>
+
+      <div class="grid">
+        <div class="card span-12">
+          <h3>Online</h3>
+          <ul class="list">
+            <!-- Replace these with your real links -->
+            <li class="item">
+              <div class="left">
+                <div class="title">Portfolio / Showreel</div>
+                <div class="meta">Video / audio</div>
+              </div>
+              <div class="right">
+                <a class="pill" href="#" target="_blank" rel="noopener">Open</a>
+              </div>
+            </li>
+            <li class="item">
+              <div class="left">
+                <div class="title">Bandcamp / SoundCloud</div>
+                <div class="meta">Music</div>
+              </div>
+              <div class="right">
+                <a class="pill" href="#" target="_blank" rel="noopener">Open</a>
+              </div>
+            </li>
+            <li class="item">
+              <div class="left">
+                <div class="title">Instagram</div>
+                <div class="meta">Updates</div>
+              </div>
+              <div class="right">
+                <a class="pill" href="#" target="_blank" rel="noopener">Open</a>
+              </div>
+            </li>
+          </ul>
+
+          <p class="fine" style="margin:14px 0 0">
+            If you prefer, you can also upload your links PDF as <span class="pill">assets/links.pdf</span>
+            and add a button to it.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-head">
+        <h2>Contact</h2>
+        <p class="sub">Make it easy to reach you</p>
+      </div>
+
+      <div class="grid">
+        <div class="card span-6">
+          <h3>Email</h3>
+          <p>
+            <a class="pill" href="mailto:youremail@domain.com">youremail@domain.com</a>
+          </p>
+          <p class="fine" style="margin-top:10px">
+            Replace the email above with your real one.
+          </p>
+        </div>
+
+        <div class="card span-6">
+          <h3>Based in</h3>
+          <p>Berlin, Germany</p>
+          <p class="fine" style="margin-top:10px">
+            For bookings: include dates, location, and brief scope.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="y"></span> Dara Shikoh Channa • Built with clean HTML/CSS • <a href="#top">Back to top</a>
+    </footer>
   </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div>© <span id="year"></span> Dara Shikoh Channa</div>
-    </div>
-  </footer>
-
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("y").textContent = new Date().getFullYear();
   </script>
-
 </body>
 </html>
