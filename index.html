@@ -18,6 +18,24 @@
   ...
 </head>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<script>
+  // Footer year
+  document.getElementById("y").textContent = new Date().getFullYear();
+
+  // Sound toggle (structure only)
+  const soundToggle = document.getElementById("sound-toggle");
+  let soundEnabled = false;
+
+  soundToggle.addEventListener("click", () => {
+    soundEnabled = !soundEnabled;
+
+    soundToggle.classList.toggle("on", soundEnabled);
+    soundToggle.setAttribute("aria-pressed", String(soundEnabled));
+    soundToggle.textContent = soundEnabled ? "● Sound" : "○ Sound";
+  });
+</script>
+</body>
+</html>
 
   <style>
     :root{
